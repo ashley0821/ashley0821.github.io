@@ -8,7 +8,7 @@ Plain HTML and CSS. No dependencies, build process, tracking, or external fonts.
 
 ## Edit
 
-Update `index.html` to change content and styles. The inline botanical illustration is SVG.
+Update `index.html` to change content and styles. Case studies, experience, skills, and education are all in that one file.
 
 ## GitHub Pages
 
