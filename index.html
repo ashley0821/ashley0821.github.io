@@ -1,69 +1,113 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ashley Chen — Full Stack Engineer</title>
 <meta name="description" content="Ashley Chen, full stack engineer in Taichung, Taiwan. C# / .NET, Vue 3, TypeScript, real-time systems, performance tuning, and production observability.">
 <meta name="theme-color" content="#f5f4ee">
 <meta property="og:title" content="Ashley Chen — Full Stack Engineer"><meta property="og:description" content="Real-time systems, performance tuning, and production support with C# / .NET and Vue 3."><meta property="og:type" content="website">
+<script>
+(function(){var l='en';try{var q=new URLSearchParams(location.search).get('lang');if(q==='zh'||q==='en'){l=q}else{var s=localStorage.getItem('lang');if(s==='zh'||s==='en')l=s}}catch(e){}var h=document.documentElement;h.setAttribute('data-lang',l);h.lang=l==='zh'?'zh-Hant-TW':'en'})();
+</script>
 <style>
-:root{--paper:#f5f4ee;--card:#fbfaf6;--ink:#24372f;--muted:#5b685f;--green:#41674e;--line:#d5dbd0;--wash:#e8eee3;--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans TC",Arial,sans-serif;--serif:Georgia,"Times New Roman",serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:86px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 var(--sans)}a{color:inherit}a:focus-visible{outline:3px solid var(--green);outline-offset:5px}::selection{background:#c4d3af}
+:root{--paper:#f5f4ee;--card:#fbfaf6;--ink:#24372f;--muted:#5b685f;--green:#41674e;--line:#d5dbd0;--wash:#e8eee3;--sans:system-ui,-apple-system,"Segoe UI",Roboto,"PingFang TC","Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;--serif:Georgia,"Times New Roman","Noto Serif TC","Songti TC",serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+html[data-lang=en] .zh,html[data-lang=zh] .en{display:none!important}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:86px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 var(--sans)}html[data-lang=zh] body{line-height:1.75}a{color:inherit}a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offset:5px}::selection{background:#c4d3af}
 .wrap{max-width:1000px;margin:auto;padding:0 38px}.skip{position:fixed;left:16px;top:-70px;padding:10px 18px;background:var(--ink);color:#fff;z-index:10}.skip:focus{top:10px}
-header{position:sticky;top:0;z-index:2;background:rgba(245,244,238,.97);border-bottom:1px solid var(--line)}.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-size:18px;font-weight:700;text-decoration:none}.brand span{color:var(--green)}nav{display:flex;gap:24px;font-size:13px}nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--ink)}
+header{position:sticky;top:0;z-index:2;background:rgba(245,244,238,.97);border-bottom:1px solid var(--line)}.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-size:18px;font-weight:700;text-decoration:none}.brand span{color:var(--green)}.nav-right{display:flex;align-items:center;gap:24px}nav{display:flex;gap:24px;font-size:13px}nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--ink)}.brand,nav a{white-space:nowrap}
+.lang-toggle{font:12px/1 var(--sans);color:var(--ink);background:transparent;border:1px solid var(--line);padding:7px 10px;cursor:pointer;white-space:nowrap}.lang-toggle:hover{border-color:var(--ink);background:var(--wash)}
 .hero{padding:64px 0 44px;max-width:770px}.eyebrow{font:11px/1.6 var(--mono);color:var(--green);letter-spacing:1.4px;text-transform:uppercase;margin:0 0 14px}h1,h2,h3,p{margin-top:0}h1{font:400 clamp(44px,6vw,66px)/1.1 var(--serif);letter-spacing:-1.7px;margin-bottom:14px}.role{font-size:23px;color:var(--green);margin-bottom:18px}.intro{font-size:17px;color:var(--muted);max-width:700px;margin-bottom:24px}
 .actions{display:flex;flex-wrap:wrap;gap:12px}.button{display:inline-flex;align-items:center;gap:24px;background:var(--ink);color:#fffefa;text-decoration:none;padding:10px 18px;font-size:13px}.button:hover{background:var(--green)}.button.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}.button.ghost:hover{background:var(--wash)}
 .facts{display:flex;gap:10px 24px;flex-wrap:wrap;margin-top:24px;font:12px/1.6 var(--mono);color:var(--muted)}
-section{padding:40px 0;border-top:1px solid var(--line)}.section-heading{font:400 31px/1.2 var(--serif);letter-spacing:-.5px;margin:0 0 8px}.section-lead{color:var(--muted);font-size:15px;margin:0 0 26px;max-width:680px}
-.cases{display:grid;grid-template-columns:1fr 1fr;gap:20px}.case{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--green);padding:22px 24px 20px;display:flex;flex-direction:column}.metric{font:600 13px/1.4 var(--mono);color:var(--green);background:var(--wash);align-self:flex-start;padding:4px 10px;margin:0 0 14px}.case h3{font:400 21px/1.3 var(--serif);margin:0 0 14px}.case dl{margin:0;font-size:14px}.case dt{font:11px/1.6 var(--mono);text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-top:10px}.case dt:first-child{margin-top:0}.case dd{margin:2px 0 0;color:var(--muted)}.tags{margin-top:auto;padding-top:16px;font:11px/1.6 var(--mono);color:var(--muted)}
+section{padding:40px 0;border-top:1px solid var(--line)}.section-heading{font:400 31px/1.2 var(--serif);letter-spacing:-.5px;margin:0 0 8px}html[data-lang=zh] .section-heading{letter-spacing:0}.section-lead{color:var(--muted);font-size:15px;margin:0 0 26px;max-width:680px}
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:20px}.case{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--green);padding:22px 24px 20px;display:flex;flex-direction:column}.metric{display:inline-block;font:600 13px/1.4 var(--mono);color:var(--green);background:var(--wash);padding:4px 10px;margin:0 0 14px}.case h3{font:400 21px/1.3 var(--serif);margin:0 0 14px}.case dl{margin:0;font-size:14px}.case dt{font:11px/1.6 var(--mono);text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-top:10px}.case dt:first-child{margin-top:0}.case dd{margin:2px 0 0;color:var(--muted)}.tags{margin-top:auto;padding-top:16px;font:11px/1.6 var(--mono);color:var(--muted)}
 .job{display:grid;grid-template-columns:185px 1fr;gap:35px;padding:0 0 30px}.job+.job{border-top:1px solid var(--line);padding-top:28px}.job:last-child{padding-bottom:0}.period{font:12px/1.8 var(--mono);color:var(--muted);padding-top:5px}.company{font-size:20px;line-height:1.4;margin:0 0 4px}.position{font-size:13px;color:var(--green);margin:0 0 16px}.job ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px}.job li{padding-left:3px;margin-bottom:9px}.job li::marker{color:var(--green)}.job li:last-child{margin-bottom:0}.job strong{color:var(--ink);font-weight:600}
 #experience .section-heading,#skills .section-heading{margin-bottom:26px}
 .skills{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}.skill{padding:15px 0;border-top:1px solid var(--line)}.skill h3{font-size:13px;color:var(--green);margin:0 0 5px}.skill p{font-size:14px;color:var(--muted);margin:0}
 .bottom{display:grid;grid-template-columns:1fr 1fr;gap:40px}.bottom .section-heading{margin-bottom:22px}.bottom h3{font-size:16px;margin:0 0 7px}.bottom p{font-size:14px;color:var(--muted);margin-bottom:12px}.contact-link{font-size:14px;text-underline-offset:5px}.contact-link:hover{color:var(--green)}
 footer{border-top:1px solid var(--line);padding:22px 0 26px;font:11px/1.6 var(--mono);color:var(--muted);display:flex;justify-content:space-between;gap:20px}footer a{text-underline-offset:4px}
 @media(max-width:760px){.cases{grid-template-columns:1fr}}
-@media(max-width:600px){.wrap{padding:0 22px}.nav{min-height:62px}nav{gap:14px;font-size:12px}.brand{font-size:17px}.hero{padding:38px 0 32px}.role{font-size:21px}.intro{font-size:16px}section{padding:32px 0}.section-heading{font-size:28px}.case{padding:20px}.job{grid-template-columns:1fr;gap:12px}.period br{display:none}.period span{margin-left:12px}.skills,.bottom{grid-template-columns:1fr;gap:0}.bottom>div+div{margin-top:28px}footer{font-size:10px}}
-.brand,nav a{white-space:nowrap}@media(max-width:440px){nav a:nth-child(3){display:none}nav{gap:12px}}
+@media(max-width:600px){.wrap{padding:0 22px}.nav{min-height:62px;gap:12px}.nav-right{gap:14px}nav{gap:14px;font-size:12px}.brand{font-size:17px}.hero{padding:38px 0 32px}.role{font-size:21px}.intro{font-size:16px}section{padding:32px 0}.section-heading{font-size:28px}.case{padding:20px}.job{grid-template-columns:1fr;gap:12px}.period br{display:none}.period span{margin-left:12px}.skills,.bottom{grid-template-columns:1fr;gap:0}.bottom>div+div{margin-top:28px}footer{font-size:10px}}
+@media(max-width:480px){nav a:nth-child(3){display:none}}
+@media(max-width:400px){nav a:nth-child(2){display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header><div class="wrap nav"><a class="brand" href="#main">Ashley Chen<span>.</span></a><nav aria-label="Main navigation"><a href="#cases">Case studies</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav></div></header>
+<a class="skip" href="#main"><span class="en">Skip to content</span><span class="zh">跳到主要內容</span></a>
+<header><div class="wrap nav"><a class="brand" href="#main">Ashley Chen<span>.</span></a><div class="nav-right"><nav aria-label="Main navigation"><a href="#cases"><span class="en">Case studies</span><span class="zh">實際案例</span></a><a href="#experience"><span class="en">Experience</span><span class="zh">工作經歷</span></a><a href="#skills"><span class="en">Skills</span><span class="zh">技能</span></a><a href="#contact"><span class="en">Contact</span><span class="zh">聯絡</span></a></nav><button class="lang-toggle" type="button" id="lang-toggle"><span class="en" lang="zh-Hant-TW">中文</span><span class="zh" lang="en">EN</span></button></div></div></header>
 <main id="main" class="wrap">
 
-<div class="hero"><p class="eyebrow">Taichung, Taiwan · Open to remote opportunities</p><h1>Ashley Chen</h1><p class="role">Full Stack Engineer</p><p class="intro">I build and run web products with C# / ASP.NET Core and Vue 3 / TypeScript. Most of my recent work has been on real-time data delivery, database and runtime performance, and keeping production systems healthy — finding out why something broke, and fixing the cause rather than the symptom.</p><div class="actions"><a class="button" href="#cases">See case studies <span aria-hidden="true">↓</span></a><a class="button ghost" href="https://www.linkedin.com/in/ashley-chen-62612828b/">LinkedIn <span aria-hidden="true">↗</span></a></div><div class="facts"><span>Nearly 3 years in software development</span><span>Full stack / Backend</span><span>C# · .NET · Vue 3</span><span>Works in English and Mandarin</span></div></div>
+<div class="hero">
+<p class="eyebrow"><span class="en">Taichung, Taiwan · Open to remote opportunities</span><span class="zh">台灣台中 · 可接受遠端工作</span></p>
+<h1>Ashley Chen</h1>
+<p class="role"><span class="en">Full Stack Engineer</span><span class="zh">全端工程師</span></p>
+<p class="intro en">I build and run web products with C# / ASP.NET Core and Vue 3 / TypeScript. Most of my recent work has been on real-time data delivery, database and runtime performance, and keeping production systems healthy — finding out why something broke, and fixing the cause rather than the symptom.</p>
+<p class="intro zh">我使用 C# / ASP.NET Core 與 Vue 3 / TypeScript 開發並維運網頁產品。近期的工作主要在即時資料推送、資料庫與執行環境的效能，以及維持正式環境的穩定：找出問題為什麼發生，從根本原因解決，而不只是處理表面症狀。</p>
+<div class="actions"><a class="button" href="#cases"><span class="en">See case studies</span><span class="zh">看實際案例</span> <span aria-hidden="true">↓</span></a><a class="button ghost" href="https://www.linkedin.com/in/ashley-chen-62612828b/">LinkedIn <span aria-hidden="true">↗</span></a></div>
+<div class="facts en"><span>Nearly 3 years in software development</span><span>Full stack / Backend</span><span>C# · .NET · Vue 3</span><span>Works in English and Mandarin</span></div>
+<div class="facts zh"><span>近 3 年軟體開發經驗</span><span>全端／後端</span><span>C# · .NET · Vue 3</span><span>可使用中英文工作</span></div>
+</div>
 
-<section id="cases"><h2 class="section-heading">Case studies</h2><p class="section-lead">A few problems I worked through in production, and the trade-offs behind each fix.</p><div class="cases">
+<section id="cases"><h2 class="section-heading"><span class="en">Case studies</span><span class="zh">實際案例</span></h2><p class="section-lead"><span class="en">A few problems I worked through in production, and the trade-offs behind each fix.</span><span class="zh">幾個我在正式環境處理過的問題，以及每個解法背後的取捨。</span></p><div class="cases">
 
-<article class="case"><p class="metric">2+ min (timing out) → ~5 s</p><h3>Speeding up a reward-eligibility query</h3><dl>
+<article class="case">
+<div class="en"><p class="metric">2+ min (timing out) → ~5 s</p><h3>Speeding up a reward-eligibility query</h3><dl>
 <dt>Problem</dt><dd>A SQL Server stored procedure that checked multi-leg bets, and every leg inside them, against reward rules ran for over two minutes and regularly timed out.</dd>
 <dt>Investigation</dt><dd>The execution plan showed correlated subqueries forcing row-by-row nested loops, with predicates that could not use the existing indexes.</dd>
 <dt>Fix and trade-off</dt><dd>I pre-filtered the bets and their legs separately on indexed columns, then combined them with a LEFT JOIN. Adding another index was the obvious alternative, but the table was write-heavy and already carried many indexes, so I improved the query instead of slowing every write.</dd>
-</dl><p class="tags">SQL Server · Execution plans · Indexing</p></article>
+</dl></div>
+<div class="zh"><p class="metric">2 分鐘以上（逾時）→ 約 5 秒</p><h3>加速獎勵資格查詢</h3><dl>
+<dt>問題</dt><dd>一支 SQL Server 預存程序要依獎勵規則檢查串關注單，以及其中的每一個子注，執行超過兩分鐘，經常逾時。</dd>
+<dt>追查</dt><dd>執行計畫顯示相關子查詢造成逐筆的巢狀迴圈，而且查詢條件用不到既有的索引。</dd>
+<dt>解法與取捨</dt><dd>我先分別用有索引的欄位篩選注單和子注，再用 LEFT JOIN 組合。加索引是最直覺的替代方案，但這張表寫入量大、已有很多索引，所以我選擇改善查詢本身，而不是讓每一次寫入都變慢。</dd>
+</dl></div>
+<p class="tags">SQL Server · Execution plans · Indexing</p></article>
 
-<article class="case"><p class="metric">Frequent OOMKilled → stable</p><h3>A memory limit that was too generous</h3><dl>
+<article class="case">
+<div class="en"><p class="metric">Frequent OOMKilled → stable</p><h3>A memory limit that was too generous</h3><dl>
 <dt>Problem</dt><dd>A Node.js GraphQL service kept high memory usage and was frequently OOMKilled by Kubernetes.</dd>
 <dt>Investigation</dt><dd>Using OpenTelemetry GC frequency and memory metrics, then verifying with tests, I found the V8 heap limit was set higher than the container's memory limit. V8 saw plenty of room and delayed full GC, so the container hit its limit and was killed first.</dd>
 <dt>Fix</dt><dd>I set the heap limit to 80% of the container limit, leaving headroom for memory outside the heap. GC started running normally and the OOM restarts stopped.</dd>
-</dl><p class="tags">Node.js · V8 · Kubernetes · OpenTelemetry</p></article>
+</dl></div>
+<div class="zh"><p class="metric">頻繁 OOMKilled → 穩定</p><h3>一個設得太大的記憶體上限</h3><dl>
+<dt>問題</dt><dd>一個 Node.js GraphQL 服務的記憶體使用量一直偏高，而且經常被 Kubernetes OOMKilled。</dd>
+<dt>追查</dt><dd>我透過 OpenTelemetry 的 GC 頻率與記憶體指標觀察，再實際測試驗證，發現 V8 heap 上限被設得比 container 的記憶體上限還大。V8 以為空間還很多，延後了完整 GC，結果 container 先超過上限被終止。</dd>
+<dt>解法</dt><dd>我把 heap 上限設為 container 上限的 80%，保留空間給 heap 以外的記憶體。之後 GC 恢復正常觸發，OOM 重啟也不再發生。</dd>
+</dl></div>
+<p class="tags">Node.js · V8 · Kubernetes · OpenTelemetry</p></article>
 
-<article class="case"><p class="metric">False alarms: ~every 2 weeks → 0</p><h3>Telling a quiet evening from an outage</h3><dl>
+<article class="case">
+<div class="en"><p class="metric">False alarms: ~every 2 weeks → 0</p><h3>Telling a quiet evening from an outage</h3><dl>
 <dt>Problem</dt><dd>A traffic-drop alert fired about every two weeks, and almost always it was just a popular match ending. Correlating traffic with match data meant querying across databases on different machines, which our rules didn't allow.</dd>
 <dt>Reframing</dt><dd>I didn't need the exact relationship — only whether a drop was local or global. Every sport is served by the same service, so a real failure takes all sports down together.</dd>
 <dt>Fix</dt><dd>I monitored bet counts for the top ten matches of each sport, all from one database, and alerted only when every sport dropped together. A slope threshold tuned on historical data filtered out the gradual off-peak decline.</dd>
-</dl><p class="tags">Grafana · Alerting · Metrics design</p></article>
+</dl></div>
+<div class="zh"><p class="metric">假警報：約每兩週一次 → 0</p><h3>分辨「比賽結束」與「服務故障」</h3><dl>
+<dt>問題</dt><dd>一個流量下降告警大約每兩週觸發一次，但幾乎都只是熱門比賽結束。要把流量和比賽資料關聯起來，需要跨不同機器的資料庫查詢，而公司規範不允許。</dd>
+<dt>重新定義問題</dt><dd>我其實不需要知道兩者的確切關係，只需要分辨下降是局部還是全面。所有運動都由同一個服務提供，真正的故障會讓所有運動一起下降。</dd>
+<dt>解法</dt><dd>我改成監控各運動前十場熱門比賽的下注數，資料都在同一個資料庫，只有所有運動一起下降時才告警；再用歷史資料調出的斜率門檻，排除離峰時段緩慢的自然下降。</dd>
+</dl></div>
+<p class="tags">Grafana · Alerting · Metrics design</p></article>
 
-<article class="case"><p class="metric">Design trade-off</p><h3>Out-of-order events in a Kafka pipeline</h3><dl>
+<article class="case">
+<div class="en"><p class="metric">Design trade-off</p><h3>Out-of-order events in a Kafka pipeline</h3><dl>
 <dt>Problem</dt><dd>When a new Bet Builder market opened together with its base odds, the Bet Builder data from a third party could arrive before the base odds existed.</dd>
 <dt>Approach</dt><dd>The consumer stored an incomplete record; once the base odds were processed, an event on a separate topic let a backfill service complete it. Timestamp-based conditional updates meant older or duplicate events never overwrote newer data.</dd>
 <dt>Trade-off</dt><dd>Odds are high-frequency state where only the latest value matters, so a failed update is corrected by the next one. We relied on alerts and a full-resync endpoint instead of per-message retries — for data that must not be lost, such as payments, I'd use bounded retries and a dead-letter queue.</dd>
-</dl><p class="tags">Kafka · Eventual consistency · Idempotency</p></article>
+</dl></div>
+<div class="zh"><p class="metric">設計取捨</p><h3>Kafka 管線中的亂序事件</h3><dl>
+<dt>問題</dt><dd>新的 Bet Builder 盤口和基本賠率同時開啟時，第三方的 Bet Builder 資料可能比基本賠率先到。</dd>
+<dt>做法</dt><dd>consumer 先寫入一筆不完整的資料；基本賠率處理完後，透過另一個 topic 的事件，讓補齊服務把資料補完。以時間戳為基礎的條件式更新，確保較舊或重複的事件不會覆蓋較新的資料。</dd>
+<dt>取捨</dt><dd>賠率是高頻更新的狀態資料，只有最新值有意義，某次更新失敗會被下一次修正。因此我們依靠告警和全量重送的 endpoint，而不是逐筆重試；如果是不能遺失的資料，例如金流，我會使用有限次數的重試加上 dead-letter queue。</dd>
+</dl></div>
+<p class="tags">Kafka · Eventual consistency · Idempotency</p></article>
 
 </div></section>
 
-<section id="experience"><h2 class="section-heading">Work experience</h2>
-<article class="job"><div class="period">FEB 2025 — JUL 2026<br><span>Taichung, Taiwan</span></div><div><h3 class="company">Titansoft</h3><p class="position">Product Developer / Full Stack Engineer</p><ul>
+<section id="experience"><h2 class="section-heading"><span class="en">Work experience</span><span class="zh">工作經歷</span></h2>
+<article class="job"><div class="period">FEB 2025 — JUL 2026<br><span><span class="en">Taichung, Taiwan</span><span class="zh">台灣台中</span></span></div><div><h3 class="company">Titansoft</h3><p class="position"><span class="en">Product Developer / Full Stack Engineer</span><span class="zh">Product Developer／全端工程師</span></p>
+<ul class="en">
 <li>Developed and maintained full stack features for a real-time sports odds product using Vue 3, TypeScript, C# / ASP.NET Core, and GraphQL.</li>
 <li>Worked on real-time odds delivery through Redis pub/sub, SignalR, and a Node.js GraphQL subscription layer; WebSocket-only SignalR connections let the service scale across Pods without sticky sessions.</li>
 <li>Processed third-party odds updates through Kafka, handling out-of-order events with a backfill service and timestamp-based conditional updates.</li>
@@ -73,27 +117,49 @@ footer{border-top:1px solid var(--line);padding:22px 0 26px;font:11px/1.6 var(--
 <li>Redesigned a noisy traffic-drop alert, reducing false alarms from <strong>about once every two weeks to zero</strong>.</li>
 <li>Added data delivery latency metrics tracked at P95 in Grafana, and maintained dashboards and alert rules across supported services.</li>
 <li>Diagnosed production issues through ELK logs, shipped fixes, and supported rollbacks; designed MongoDB data structures and indexes; maintained CI/CD pipelines.</li>
+</ul>
+<ul class="zh">
+<li>使用 Vue 3、TypeScript、C# / ASP.NET Core 與 GraphQL，開發並維護即時體育賠率產品的全端功能。</li>
+<li>參與即時賠率推送鏈路（Redis pub/sub、SignalR、Node.js GraphQL subscription）；SignalR 只使用 WebSocket 連線，讓服務能在多個 Pod 間擴展，而不需要 sticky session。</li>
+<li>透過 Kafka 處理第三方賠率更新，以補齊服務與時間戳條件式更新處理亂序事件。</li>
+<li>將一支 SQL Server 預存程序從<strong>超過 2 分鐘（逾時）降到約 5 秒</strong>，方法是把巢狀子查詢改寫成先用索引篩選。</li>
+<li>使用 k6 對 API 與 WebSocket 服務進行壓力測試，找出 Node.js 層的 CPU 瓶頸，並規劃 Pod 數量與以 CPU 為指標的 HPA 設定。</li>
+<li>修正超過 container 記憶體上限的 V8 heap 設定，解決<strong>反覆發生的 OOMKilled 重啟</strong>。</li>
+<li>重新設計容易誤報的流量下降告警，假警報從<strong>約每兩週一次降到零</strong>。</li>
+<li>新增資料傳遞延遲指標，在 Grafana 以 P95 追蹤，並維護負責服務的 dashboard 與告警規則。</li>
+<li>透過 ELK 日誌診斷正式環境問題、修正並協助回滾；設計 MongoDB 資料結構與索引；維護 CI/CD pipeline。</li>
 </ul></div></article>
-<article class="job"><div class="period">OCT 2023 — JAN 2025<br><span>Taichung, Taiwan</span></div><div><h3 class="company">桓基科技股份有限公司</h3><p class="position">Full Stack Engineer</p><ul>
+<article class="job"><div class="period">OCT 2023 — JAN 2025<br><span><span class="en">Taichung, Taiwan</span><span class="zh">台灣台中</span></span></div><div><h3 class="company">桓基科技股份有限公司</h3><p class="position"><span class="en">Full Stack Engineer</span><span class="zh">全端工程師</span></p>
+<ul class="en">
 <li>Developed and maintained ASP.NET Core APIs in a decoupled frontend/backend architecture.</li>
 <li>Migrated service deployment from IIS to Docker and Nginx, removing manual server configuration and environment inconsistencies.</li>
 <li>Extracted permission management into a standalone service, with a NuGet client package for other services to call its API.</li>
 <li>Introduced Scrum practices to the team, including daily standups and retrospectives.</li>
+</ul>
+<ul class="zh">
+<li>在前後端分離的架構下，開發並維護 ASP.NET Core API。</li>
+<li>將服務部署從 IIS 遷移到 Docker 與 Nginx，省去手動設定，也解決環境不一致的問題。</li>
+<li>將權限管理拆成獨立服務，並提供 NuGet 用戶端套件，讓其他服務呼叫它的 API。</li>
+<li>在團隊導入 Scrum，包括每日站會與回顧會議。</li>
 </ul></div></article>
 </section>
 
-<section id="skills"><h2 class="section-heading">Technical skills</h2><div class="skills">
-<div class="skill"><h3>Backend</h3><p>C#, ASP.NET Core, GraphQL, SignalR, Node.js, Entity Framework, Dapper</p></div>
-<div class="skill"><h3>Frontend</h3><p>Vue 3, TypeScript, JavaScript, HTML, CSS</p></div>
-<div class="skill"><h3>Data and messaging</h3><p>SQL Server, MongoDB, Kafka, Redis</p></div>
-<div class="skill"><h3>Observability</h3><p>Grafana dashboards and alerts, ELK, OpenTelemetry, custom metrics</p></div>
-<div class="skill"><h3>Deployment and testing</h3><p>Docker, Nginx, Kubernetes (HPA, resource tuning), CI/CD, k6</p></div>
-<div class="skill"><h3>Version control</h3><p>Git</p></div>
-<div class="skill"><h3>Languages</h3><p>Mandarin (native) · English (professional working proficiency): worked day to day in English with Singapore-based teammates at Titansoft, from technical discussions and cross-team coordination to casual conversation.</p></div>
+<section id="skills"><h2 class="section-heading"><span class="en">Technical skills</span><span class="zh">技術能力</span></h2><div class="skills">
+<div class="skill"><h3><span class="en">Backend</span><span class="zh">後端</span></h3><p>C#, ASP.NET Core, GraphQL, SignalR, Node.js, Entity Framework, Dapper</p></div>
+<div class="skill"><h3><span class="en">Frontend</span><span class="zh">前端</span></h3><p>Vue 3, TypeScript, JavaScript, HTML, CSS</p></div>
+<div class="skill"><h3><span class="en">Data and messaging</span><span class="zh">資料與訊息</span></h3><p>SQL Server, MongoDB, Kafka, Redis</p></div>
+<div class="skill"><h3><span class="en">Observability</span><span class="zh">可觀測性</span></h3><p class="en">Grafana dashboards and alerts, ELK, OpenTelemetry, custom metrics</p><p class="zh">Grafana dashboard 與告警、ELK、OpenTelemetry、自訂指標</p></div>
+<div class="skill"><h3><span class="en">Deployment and testing</span><span class="zh">部署與測試</span></h3><p class="en">Docker, Nginx, Kubernetes (HPA, resource tuning), CI/CD, k6</p><p class="zh">Docker、Nginx、Kubernetes（HPA、資源調校）、CI/CD、k6</p></div>
+<div class="skill"><h3><span class="en">Version control</span><span class="zh">版本控制</span></h3><p>Git</p></div>
+<div class="skill"><h3><span class="en">Languages</span><span class="zh">語言</span></h3><p class="en">Mandarin (native) · English (professional working proficiency): worked day to day in English with Singapore-based teammates at Titansoft, from technical discussions and cross-team coordination to casual conversation.</p><p class="zh">中文（母語）· 英文（專業工作程度）：在 Titansoft 每天與新加坡同事以英文合作，從技術討論、跨團隊協作到日常閒聊。</p></div>
 </div></section>
 
-<section id="contact"><div class="bottom"><div><h2 class="section-heading">Education</h2><h3>National Chung Hsing University</h3><p>Bachelor's degree · Forestry. First wrote code there, using Python for GIS data filtering.</p><h3>Self-directed CS study</h3><p>Harvard CS50 and freeCodeCamp. <a class="contact-link" href="https://hackmd.io/@w-p4yBhLSfq7E64sDpp1eg/BkpAIzW4p">My public CS50 notes ↗</a></p></div><div><h2 class="section-heading">Contact</h2><p>Interested in full stack and backend engineering roles, including remote positions.</p><a class="contact-link" href="https://www.linkedin.com/in/ashley-chen-62612828b/">Find me on LinkedIn ↗</a></div></div></section>
-<footer><span>© 2026 Ashley Chen</span><a href="#main">Back to top ↑</a></footer>
+<section id="contact"><div class="bottom"><div><h2 class="section-heading"><span class="en">Education</span><span class="zh">學歷</span></h2><h3><span class="en">National Chung Hsing University</span><span class="zh">國立中興大學</span></h3><p class="en">Bachelor's degree · Forestry. First wrote code there, using Python for GIS data filtering.</p><p class="zh">學士 · 森林學系。在這裡第一次寫程式，用 Python 做 GIS 資料篩選。</p><h3><span class="en">Self-directed CS study</span><span class="zh">自主學習資訊科學</span></h3><p><span class="en">Harvard CS50 and freeCodeCamp.</span><span class="zh">哈佛 CS50 與 freeCodeCamp。</span> <a class="contact-link" href="https://hackmd.io/@w-p4yBhLSfq7E64sDpp1eg/BkpAIzW4p"><span class="en">My public CS50 notes ↗</span><span class="zh">我的 CS50 公開筆記 ↗</span></a></p></div><div><h2 class="section-heading"><span class="en">Contact</span><span class="zh">聯絡</span></h2><p class="en">Interested in full stack and backend engineering roles, including remote positions.</p><p class="zh">正在尋找全端與後端工程師職缺，也歡迎遠端工作機會。</p><a class="contact-link" href="https://www.linkedin.com/in/ashley-chen-62612828b/"><span class="en">Find me on LinkedIn ↗</span><span class="zh">在 LinkedIn 聯絡我 ↗</span></a></div></div></section>
+<footer><span>© 2026 Ashley Chen</span><a href="#main"><span class="en">Back to top ↑</span><span class="zh">回到頂端 ↑</span></a></footer>
 </main>
+<script>
+(function(){var h=document.documentElement,b=document.getElementById('lang-toggle');var titles={en:'Ashley Chen — Full Stack Engineer',zh:'Ashley Chen — 全端工程師'};function apply(l){h.setAttribute('data-lang',l);h.lang=l==='zh'?'zh-Hant-TW':'en';document.title=titles[l];b.setAttribute('aria-label',l==='zh'?'Switch to English':'切換為中文');try{localStorage.setItem('lang',l)}catch(e){}try{var u=new URL(location.href);if(l==='zh'){u.searchParams.set('lang','zh')}else{u.searchParams.delete('lang')}history.replaceState(null,'',u)}catch(e){}}
+apply(h.getAttribute('data-lang')==='zh'?'zh':'en');b.addEventListener('click',function(){apply(h.getAttribute('data-lang')==='zh'?'en':'zh')})})();
+</script>
 </body>
 </html>
