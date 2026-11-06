@@ -94,12 +94,12 @@ footer{border-top:1px solid var(--line);padding:22px 0 26px;font:11px/1.6 var(--
 <div class="en"><p class="metric">Design trade-off</p><h3>Out-of-order events in a Kafka pipeline</h3><dl>
 <dt>Problem</dt><dd>When a new combined-data feature launched together with the base data it depends on, the combined data from a third party could arrive before the base data existed.</dd>
 <dt>Approach</dt><dd>The consumer stored an incomplete record; once the base data was processed, an event on a separate topic let a backfill service complete it. Timestamp-based conditional updates meant older or duplicate events never overwrote newer data.</dd>
-<dt>Trade-off</dt><dd>This is high-frequency state data where only the latest value matters, so a failed update is corrected by the next one. We relied on alerts and a full-resync endpoint instead of per-message retries — for data that must not be lost, such as payments, I'd use bounded retries and a dead-letter queue.</dd>
+<dt>Trade-off</dt><dd>This is high-frequency state data where only the latest value matters, so a failed update is corrected by the next one. We relied on alerts and a full-resync endpoint instead of per-message retries.</dd>
 </dl></div>
 <div class="zh"><p class="metric">設計取捨</p><h3>Kafka 管線中的亂序事件</h3><dl>
 <dt>問題</dt><dd>新的組合型資料功能和它依賴的基本資料同時開啟時，第三方的組合資料可能比基本資料先到。</dd>
 <dt>做法</dt><dd>consumer 先寫入一筆不完整的資料；基本資料處理完後，透過另一個 topic 的事件，讓補齊服務把資料補完。以時間戳為基礎的條件式更新，確保較舊或重複的事件不會覆蓋較新的資料。</dd>
-<dt>取捨</dt><dd>這是高頻更新的狀態資料，只有最新值有意義，某次更新失敗會被下一次修正。因此我們依靠告警和全量重送的 endpoint，而不是逐筆重試；如果是不能遺失的資料，例如金流，我會使用有限次數的重試加上 dead-letter queue。</dd>
+<dt>取捨</dt><dd>這是高頻更新的狀態資料，只有最新值有意義，某次更新失敗會被下一次修正。因此我們依靠告警和全量重送的 endpoint，而不是逐筆重試。</dd>
 </dl></div>
 <p class="tags">Kafka · Eventual consistency · Idempotency</p></article>
 
@@ -160,7 +160,7 @@ footer{border-top:1px solid var(--line);padding:22px 0 26px;font:11px/1.6 var(--
 <div class="skill"><h3><span class="en">Observability</span><span class="zh">可觀測性</span></h3><p class="en">Grafana dashboards and alerts, ELK, OpenTelemetry, custom metrics</p><p class="zh">Grafana dashboard 與告警、ELK、OpenTelemetry、自訂指標</p></div>
 <div class="skill"><h3><span class="en">Deployment and testing</span><span class="zh">部署與測試</span></h3><p class="en">Docker, Nginx, Kubernetes (HPA, resource tuning), CI/CD, k6</p><p class="zh">Docker、Nginx、Kubernetes（HPA、資源調校）、CI/CD、k6</p></div>
 <div class="skill"><h3><span class="en">Version control</span><span class="zh">版本控制</span></h3><p>Git</p></div>
-<div class="skill"><h3><span class="en">Languages</span><span class="zh">語言</span></h3><p class="en">Mandarin (native) · English (professional working proficiency): worked day to day in English with Singapore-based teammates at Titansoft, from technical discussions and cross-team coordination to casual conversation.</p><p class="zh">中文（母語）· 英文（專業工作程度）：在 Titansoft 每天與新加坡同事以英文合作，從技術討論、跨團隊協作到日常閒聊。</p></div>
+<div class="skill"><h3><span class="en">Languages</span><span class="zh">語言</span></h3><p class="en">Mandarin (native) · English (professional working proficiency): worked in English with Singapore-based teammates at Titansoft, from technical discussions and cross-team coordination to casual conversation.</p><p class="zh">中文（母語）· 英文（專業工作程度）：在 Titansoft 與新加坡同事以英文合作，從技術討論、跨團隊協作到日常閒聊。</p></div>
 </div></section>
 
 <section id="contact"><div class="bottom"><div><h2 class="section-heading"><span class="en">Education</span><span class="zh">學歷</span></h2><h3><span class="en">National Chung Hsing University</span><span class="zh">國立中興大學</span></h3><p class="en">Bachelor's degree · Forestry. First wrote code there, using Python for GIS data filtering.</p><p class="zh">學士 · 森林學系。在這裡第一次寫程式，用 Python 做 GIS 資料篩選。</p><h3><span class="en">Self-directed CS study</span><span class="zh">自主學習資訊科學</span></h3><p><span class="en">Harvard CS50 and freeCodeCamp.</span><span class="zh">哈佛 CS50 與 freeCodeCamp。</span> <a class="contact-link" href="https://hackmd.io/@w-p4yBhLSfq7E64sDpp1eg/BkpAIzW4p"><span class="en">My public CS50 notes ↗</span><span class="zh">我的 CS50 公開筆記 ↗</span></a></p></div><div><h2 class="section-heading"><span class="en">Contact</span><span class="zh">聯絡</span></h2><p class="en">Interested in full stack and backend engineering roles, including remote positions.</p><p class="zh">正在尋找全端與後端工程師職缺，也歡迎遠端工作機會。</p><ul class="contact-list"><li><a class="contact-link" href="https://www.linkedin.com/in/ashley-chen-62612828b/"><span class="en">Find me on LinkedIn ↗</span><span class="zh">在 LinkedIn 聯絡我 ↗</span></a></li><li><a class="contact-link" href="https://www.cake.me/ashley-chen-tw"><span class="en">Resume on Cake ↗</span><span class="zh">Cake 履歷 ↗</span></a></li></ul></div></div></section>
