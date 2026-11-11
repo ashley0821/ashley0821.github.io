@@ -91,15 +91,15 @@ footer{border-top:1px solid var(--line);padding:22px 0 26px;font:11px/1.6 var(--
 <p class="tags">Grafana · Alerting · Metrics design</p></article>
 
 <article class="case">
-<div class="en"><p class="metric">Design trade-off</p><h3>Out-of-order events in a Kafka pipeline</h3><dl>
-<dt>Problem</dt><dd>When a new combined-data feature launched together with the base data it depends on, the combined data from a third party could arrive before the base data existed.</dd>
-<dt>Approach</dt><dd>The consumer stored an incomplete record; once the base data was processed, an event on a separate topic let a backfill service complete it. Timestamp-based conditional updates meant older or duplicate events never overwrote newer data.</dd>
-<dt>Trade-off</dt><dd>This is high-frequency state data where only the latest value matters, so a failed update is corrected by the next one. We relied on alerts and a full-resync endpoint instead of per-message retries.</dd>
+<div class="en"><p class="metric">Event-driven design</p><h3>Data that arrives before what it depends on</h3><dl>
+<dt>Problem</dt><dd>Third-party data had to be combined with base data from another table before it was complete, but sometimes it arrived before the base data had been written.</dd>
+<dt>Approach</dt><dd>The first service saved what it had and left the missing parts empty. The service that owns the base data published an event every time it added or updated a record. A separate validation service consumed that event, completed any records that could now be filled in, and sent them on to the original topic. Timestamp-based conditional updates meant older or duplicate events never overwrote newer data.</dd>
+<dt>Design choice</dt><dd>Keeping the completion logic in its own service kept responsibilities separate. Because it was triggered by events when the data actually arrived, nothing had to poll or retry blindly.</dd>
 </dl></div>
-<div class="zh"><p class="metric">設計取捨</p><h3>Kafka 管線中的亂序事件</h3><dl>
-<dt>問題</dt><dd>新的組合型資料功能和它依賴的基本資料同時開啟時，第三方的組合資料可能比基本資料先到。</dd>
-<dt>做法</dt><dd>consumer 先寫入一筆不完整的資料；基本資料處理完後，透過另一個 topic 的事件，讓補齊服務把資料補完。以時間戳為基礎的條件式更新，確保較舊或重複的事件不會覆蓋較新的資料。</dd>
-<dt>取捨</dt><dd>這是高頻更新的狀態資料，只有最新值有意義，某次更新失敗會被下一次修正。因此我們依靠告警和全量重送的 endpoint，而不是逐筆重試。</dd>
+<div class="zh"><p class="metric">事件驅動設計</p><h3>比依賴資料更早到的資料</h3><dl>
+<dt>問題</dt><dd>第三方資料必須搭配另一張表的基本資料才算完整，但有時第三方資料比基本資料更早到。</dd>
+<dt>做法</dt><dd>第一個服務先把已有的資料存下來，缺的部分留空。負責基本資料的服務每次新增或更新資料時，都會發出事件；另一個驗證服務 consume 這個事件，把現在已經湊齊的資料補完，再送回原本的 topic。以時間戳為基礎的條件式更新，確保較舊或重複的事件不會覆蓋較新的資料。</dd>
+<dt>設計考量</dt><dd>把補齊的邏輯獨立成一個服務，讓職責分離；而且是等資料真的到了才由事件觸發，不需要輪詢或盲目重試。</dd>
 </dl></div>
 <p class="tags">Kafka · Eventual consistency · Idempotency</p></article>
 
